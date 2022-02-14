@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import './App.css';
 import User from './Component/User';
 
 const App = () => {
-  const users = [
-    { name: "Anish", email: "anish@gmail.com", contact: "123" },
-    { name: "Rohit", email: "rohit@gmail.com", contact: "123" },
-    { name: "Aman", email: "aman@gmail.com", contact: "123" },
-    { name: "Shobhit", email: "shobhit@gmail.com", contact: "123" }
-  ]
 
-  const parentAlert = (data) =>{
-    alert('Name: '+data.name+', Email: '+data.email);
-  }
+  const [Count, setCount] = useState(0);
+  const [Item, setItem] = useState(10);
+
+  const multiCountMemo = useMemo(() => {
+    return Count * 5;
+  }, [Count])
+
+  // const multiCount = () => {
+  //   return Count * 5;
+  // }
 
   return (
     <div className='App'>
       <h1>Reuse Component with List</h1>
-      {
-        users.map((item ,i)=>
-          <User key={i} alert={parentAlert} items={item} />
-        )
-      }
+      <h2>{Count}</h2>
+      <h2>{Item}</h2>
+      <h2>{multiCountMemo}</h2>
+      <button onClick={() => setCount(Count + 1)}>Update Count</button>
+      <button onClick={() => setItem(Item * 10)}>Update Item</button>
     </div>
   );
 
