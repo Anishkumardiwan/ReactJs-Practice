@@ -1,33 +1,20 @@
-import { React, Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import User from './Component/User';
 
-class App extends Component {
+const App = () => {
+  const [count, setCount] = useState(0);
 
-  constructor() {
-    super();
-    this.state = {
-      show: true
-    }
-    console.log("Constructor");
-  }
+  useEffect(() => {
+    console.log(count);
+  })
 
-  // shouldComponentUpdate() {
-  //   console.log("Should Component Update");
-  // }
-
-  render() {
-    console.log("Render");
-
-    return (
-      <div className='App'>
-        {
-          this.state.show ? <User /> : <h2>Child Component Remove</h2>
-        }
-        <button onClick={()=> this.setState({show: !this.state.show})} >Toggle Child Component</button>
-      </div>
-    );
-  }
+  return (
+    <div className='App'>
+      <h1>Data = {count}</h1>
+      <button onClick={() => setCount(count+1)} >Update Counter</button>
+    </div>
+  );
 }
 
 export default App;
