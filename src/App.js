@@ -12,9 +12,11 @@ class App extends Component {
     console.log("Constructor");
   }
 
-  shouldComponentUpdate(){
-    console.log("Should Component Update" , this.state.count);
-    return true;
+  shouldComponentUpdate() {
+    console.log("Should Component Update", this.state.count);
+    if (this.state.count > 5 && this.state.count < 10) {
+      return true;
+    }
   }
 
   render() {
@@ -24,7 +26,7 @@ class App extends Component {
       <div className='App'>
         <h1>Hello {this.state.name}</h1>
         <h2>{this.state.count}</h2>
-        <button onClick={() => this.setState({ count: this.state.count+1 })} >Update Name</button>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })} >Update Name</button>
       </div>
     );
   }
