@@ -1,31 +1,36 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, createRef } from 'react';
 import './App.css';
 import User from './Component/User';
 
-const App = () => {
+class App extends React.Component {
 
-  const [Count, setCount] = useState(0);
-  const [Item, setItem] = useState(10);
+  constructor(){
+    super();
+    this.inputRef = createRef();
+  }
 
-  const multiCountMemo = useMemo(() => {
-    return Count * 5;
-  }, [Count])
-
-  // const multiCount = () => {
-  //   return Count * 5;
+  // componentDidMount(){
+  //   console.log(this.inputRef);
+  //   console.log(this.inputRef.current.value="100000");
   // }
 
-  return (
-    <div className='App'>
-      <h1>Reuse Component with List</h1>
-      <h2>{Count}</h2>
-      <h2>{Item}</h2>
-      <h2>{multiCountMemo}</h2>
-      <button onClick={() => setCount(Count + 1)}>Update Count</button>
-      <button onClick={() => setItem(Item * 10)}>Update Item</button>
-    </div>
-  );
+  getVal(){
+    console.log(this.inputRef);
+    console.log(this.inputRef.current.value);
+    this.inputRef.current.style.color="white";
+    this.inputRef.current.style.backgroundColor="red";
+  }
 
+  render() {
+    return (
+      <div className='App'>
+        <h1>Ref in React</h1>
+        <input type="text" ref={this.inputRef} />
+        <button onClick={()=>this.getVal()}>Check Ref</button>
+      </div>
+    );
+
+  }
 }
 
 export default App;
