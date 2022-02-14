@@ -3,21 +3,24 @@ import './App.css';
 import User from './Component/User';
 
 const App = () => {
-  const [count, setCount] = useState(100);
-  const [data, setData] = useState(10)
-  const userData = {count , data};
-
-  useEffect(() => {
-    console.log("Called with Data State");
-  },[data]);
+  const users = [
+    { name: "Anish", email: "anish@gmail.com", contact: "123" },
+    { name: "Rohit", email: "rohit@gmail.com", contact: "123" },
+    { name: "Aman", email: "aman@gmail.com", contact: "123" },
+    { name: "Shobhit", email: "shobhit@gmail.com", contact: "123" }
+  ]
 
   return (
     <div className='App'>
-      <User data={userData} />
-      <button onClick={() => setCount(count + 1)} >Update Counter</button> <br />
-      <button onClick={() => setData(data + 1)} >Update Data</button>
+      <h1>Reuse Component with List</h1>
+      {
+        users.map((item ,i)=>
+          <User key={i} items={item} />
+        )
+      }
     </div>
   );
+
 }
 
 export default App;
