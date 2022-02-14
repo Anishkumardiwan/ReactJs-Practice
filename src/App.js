@@ -5,19 +5,15 @@ import User from './Component/User';
 const App = () => {
   const [count, setCount] = useState(100);
   const [data, setData] = useState(10)
+  const userData = {count , data};
 
   useEffect(() => {
     console.log("Called with Data State");
   },[data]);
 
-  useEffect(() => {
-    console.log("Called with Count State")
-  }, [count]);
-
   return (
     <div className='App'>
-      <h1>Count = {count}</h1>
-      <h2>Data = {data}</h2>
+      <User data={userData} />
       <button onClick={() => setCount(count + 1)} >Update Counter</button> <br />
       <button onClick={() => setData(data + 1)} >Update Data</button>
     </div>

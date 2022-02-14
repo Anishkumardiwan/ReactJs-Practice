@@ -1,21 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class User extends React.Component{
-    constructor(props){
-        super();
-    }
+const User = (props) => {
 
-    componentWillUnmount(){
-        console.log("Component Will Unmount");
-    }
-
-    render(){
-        return(
-            <div>
-                <h2>Welcome to Our Site Anish Kumar</h2>
-            </div>
-        );
-    }
+    // console.log(props)
+  return (
+    <div className='App'>
+      <h1>CountProps = {props.data.count}</h1>
+      <h2>DataProps = {props.data.data}</h2>
+    </div>
+  );
 }
 
 export default User;
