@@ -10,6 +10,10 @@ const App = () => {
     console.log("Called with Data State");
   },[data]);
 
+  useEffect(() => {
+    console.log("Called with Count State")
+  }, [count]);
+
   return (
     <div className='App'>
       <h1>Count = {count}</h1>
