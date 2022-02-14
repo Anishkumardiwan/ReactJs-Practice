@@ -10,12 +10,16 @@ const App = () => {
     { name: "Shobhit", email: "shobhit@gmail.com", contact: "123" }
   ]
 
+  const parentAlert = (data) =>{
+    alert('Name: '+data.name+', Email: '+data.email);
+  }
+
   return (
     <div className='App'>
       <h1>Reuse Component with List</h1>
       {
         users.map((item ,i)=>
-          <User key={i} items={item} />
+          <User key={i} alert={parentAlert} items={item} />
         )
       }
     </div>
