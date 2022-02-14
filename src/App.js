@@ -1,36 +1,27 @@
-import React, { useState, useMemo, createRef } from 'react';
+import React, { useState, useMemo, createRef, useRef } from 'react';
 import './App.css';
 import User from './Component/User';
 
-class App extends React.Component {
+const App = () => {
 
-  constructor(){
-    super();
-    this.inputRef = createRef();
+  const inputRef = useRef(null);
+
+  const handleInputRef = () => {
+    console.log("Function Called");
+    // inputRef.current.value="1000";
+    // inputRef.current.focus()
+    // inputRef.current.style.display="none";
+    inputRef.current.style.color="red";
   }
 
-  // componentDidMount(){
-  //   console.log(this.inputRef);
-  //   console.log(this.inputRef.current.value="100000");
-  // }
+  return (
+    <div className='App'>
+      <h1>Ref in React</h1>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleInputRef} >Check Ref</button>
+    </div>
+  );
 
-  getVal(){
-    console.log(this.inputRef);
-    console.log(this.inputRef.current.value);
-    this.inputRef.current.style.color="white";
-    this.inputRef.current.style.backgroundColor="red";
-  }
-
-  render() {
-    return (
-      <div className='App'>
-        <h1>Ref in React</h1>
-        <input type="text" ref={this.inputRef} />
-        <button onClick={()=>this.getVal()}>Check Ref</button>
-      </div>
-    );
-
-  }
 }
 
 export default App;
