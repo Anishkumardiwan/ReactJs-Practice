@@ -12,25 +12,19 @@ class App extends Component {
     console.log("Constructor");
   }
 
-  componentDidUpdate(preProps, preState, snapShot) {
-    console.log("Component Did Update", preState.count, this.state.count);
-    console.log(snapShot);
-    // this.setState({count: this.state.count+1});
-    if (preState.count === this.state.count) {
-      console.log("Data is Same");
-    }
+  shouldComponentUpdate(){
+    console.log("Should Component Update" , this.state.count);
+    return true;
   }
 
   render() {
-
-    // this.setState({name:"Rohit"});
-    // console.log("Render");
+    console.log("Render");
 
     return (
       <div className='App'>
         <h1>Hello {this.state.name}</h1>
         <h2>{this.state.count}</h2>
-        <button onClick={() => this.setState({ count: 1 })} >Update Name</button>
+        <button onClick={() => this.setState({ count: this.state.count+1 })} >Update Name</button>
       </div>
     );
   }
