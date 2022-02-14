@@ -10,9 +10,15 @@ class App extends Component{
     this.state = {
       name : "Anish"
     }
+    console.log("Constructor");
+  }
+
+  componentDidMount(){
+    console.log("Component Did Mount");
   }
 
   render(){
+    console.log("Render");
     return(
       <div className='App'>
         <h1>Hello {this.state.data}</h1>
