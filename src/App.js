@@ -1,43 +1,41 @@
-import React, { useState, useMemo, createRef, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import User from './Component/User';
 
 const App = () => {
 
-  const [val, setVal] = useState("Enter Here.....");
+  const [Data, setData] = useState([])
+
+  useEffect(() => {
+    const URL = 'https://jsonplaceholder.typicode.com/todos/';
+    fetch(URL).then((result) => result.json())
+      .then((json) => setData(json))
+  }, []);
+
+  // console.log(Data)
 
   return (
     <div className='App'>
-      <h1>High Order Component</h1>
-      <HOCRed cmp={Counter} />
-      <HOCGreen cmp={Counter} />
+      <h1>Get API Call</h1>
+      <table border="1">
+        <tr>
+          <td>ID</td>
+          <td>Title</td>
+          <td>UserId</td>
+        </tr>
+        {
+          Data.map((item) =>
+            <tr>
+              <td>{item.id}</td>
+              <td>{item.title}</td>
+              <td>{item.userId}</td>
+            </tr>
+          )
+        }
+      </table>
     </div>
   );
-
-}
-
-const HOCRed = (props) => {
-  return(
-    <h2 style={{backgroundColor:'red',width:100}}> <props.cmp/> </h2>
-  );
-}
-
-const HOCGreen = (props) => {
-  return(
-    <h2 style={{backgroundColor:'green',width:100}}> <props.cmp/> </h2>
-  );
-}
-
-const Counter = () => {
-
-  const [Count, setCount] = useState(0)
-
-  return (
-    <>
-      <h3> {Count} </h3>
-      <button onClick={() => setCount(Count + 1)}>Update</button>
-    </>
-  );
+  // 61f80b5b6bf080c2555a74fa
 }
 
 export default App;
