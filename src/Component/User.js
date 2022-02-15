@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState , forwardRef } from 'react';
 
-const User = (props) => {
+const User = (props , ref) => {
 
-    // console.log(props)
-    const data = props.items;
+  // console.log(ref)
+  // const data = props;
   return (
-    <div>
-      <span>{props.items.name}</span>
-      <span>{props.items.email}</span>
-      <span>{props.items.contact}</span>
-      <button onClick={()=>props.alert(data)} >Click Me</button>
-    </div>
+    <>
+    <input ref={ref} type="text" />
+    </>
   );
 }
 
-export default User;
+export default forwardRef(User);

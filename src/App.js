@@ -8,17 +8,16 @@ const App = () => {
 
   const handleInputRef = () => {
     console.log("Function Called");
-    // inputRef.current.value="1000";
-    // inputRef.current.focus()
-    // inputRef.current.style.display="none";
-    inputRef.current.style.color="red";
+    inputRef.current.style.color="white";
+    inputRef.current.style.backgroundColor="red";
+
   }
 
   return (
     <div className='App'>
       <h1>Ref in React</h1>
-      <input type="text" ref={inputRef} />
-      <button onClick={handleInputRef} >Check Ref</button>
+      <User ref={inputRef} />
+      <button onClick={handleInputRef} >Update Box</button>
     </div>
   );
 
