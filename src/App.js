@@ -1,22 +1,23 @@
-import React from 'react';
-import User from './Component/User';
-export const MyContext = React.createContext();
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "Anish"
-    };
-  }
-
+import React, { Component } from "react";
+import User from "./Component/User";
+import { Provider } from "./Component/Common/Context";
+export default class App extends Component {
+  state = {
+    name: "Rahul",
+    value: 5
+  };
+  handleClickContext = () => {
+    this.setState({ value: this.state.value + 1 });
+  };
   render() {
+    const contextValue = {
+      data: this.state,
+      handleClick: this.handleClickContext
+    };
     return (
-      <MyContext.Provider value={this.state.name}>
+      <Provider value={contextValue}>
         <User />
-      </MyContext.Provider>
+      </Provider>
     );
   }
 }
-
-export default App;
