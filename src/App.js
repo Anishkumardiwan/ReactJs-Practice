@@ -8,15 +8,12 @@ const App = () => {
 
   const setUpdateCounter = () => {
     let rand = Math.floor(Math.random() * 10);
-    setCount((pre) => {
-      console.log(pre);
-      return rand;
-    });
+    return setCount(rand);
   }
 
   return (
     <div className='App'>
-      <h1>{Count}</h1>
+      <User count={Count} />
       <button onClick={setUpdateCounter}>Click</button>
     </div>
   );
