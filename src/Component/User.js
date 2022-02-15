@@ -1,14 +1,14 @@
-import React, { useState , forwardRef } from 'react';
+import React, { useState} from 'react';
 
-const User = (props , ref) => {
+const User = (props) => {
 
   // console.log(ref)
   // const data = props;
   return (
     <>
-    <input ref={ref} type="text" />
+    <input type="text" />
     </>
   );
 }
 
-export default forwardRef(User);
+export default User;
