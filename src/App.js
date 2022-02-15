@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React from 'react';
 import User from './Component/User';
+export const MyContext = React.createContext();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-const App = () => {
-
-  const [Count, setCount] = useState(1);
-
-  const setUpdateCounter = () => {
-    let rand = Math.floor(Math.random() * 10);
-    return setCount(rand);
+    this.state = {
+      name: "Anish"
+    };
   }
 
-  return (
-    <div className='App'>
-      <User count={Count} />
-      <button onClick={setUpdateCounter}>Click</button>
-    </div>
-  );
-
+  render() {
+    return (
+      <MyContext.Provider value={this.state.name}>
+        <User />
+      </MyContext.Provider>
+    );
+  }
 }
 
 export default App;

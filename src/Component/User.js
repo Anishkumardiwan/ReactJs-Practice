@@ -1,21 +1,18 @@
-import React, { useState , useEffect , useRef} from 'react';
+import React, {Component , useState , useEffect , useRef} from 'react';
+import Student from './Student';
+class User extends Component{
+  constructor(props){
+    super();
+  }
 
-const User = (props) => {
-
-  const lastVal = useRef();
-
-  useEffect(()=>{
-    lastVal.current=props.count
-  })
-  // console.log(ref)
-  // const data = props;
-  const preProps = lastVal.current
-  return (
-    <div>
-      <h1>Current Value: {props.count}</h1>
-      <h1>Previous Value: {preProps}</h1>
-    </div>
-  );
+  render(){
+    return(
+      <>
+      <h1>User {this.props.name}</h1>
+      <Student />
+      </>
+    );
+  }
 }
 
 export default User;
